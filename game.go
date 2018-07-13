@@ -33,5 +33,7 @@ func (c *Client) GetGame(id int64) (models.Game, error) {
 		return models.Game{}, err
 	}
 
+	parseVideos(&game[0].Videos)
+
 	return game[0], nil
 }
