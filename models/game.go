@@ -8,8 +8,8 @@ type Game struct {
 	UpdatedAt             int        `json:"updated_at,omitempty"`
 	CreatedAt             int        `json:"created_at,omitempty"`
 	Storyline             string     `json:"storyline,omitempty"`
-	Collection            int        `json:"collection,omitempty"`
-	Franchise             int        `json:"franchise,omitempty"`
+	Collection            Collection `json:"collection,omitempty"`
+	Franchise             Franchise  `json:"franchise,omitempty"`
 	Hypes                 int        `json:"hypes,omitempty"`
 	Popularity            float64    `json:"popularity,omitempty"`
 	Rating                float64    `json:"rating,omitempty"`
