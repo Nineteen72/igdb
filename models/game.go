@@ -1,6 +1,6 @@
 package models
 
-// GameResponse entity.
+// Game entity.
 type Game struct {
 	ID                    uint64     `json:"id,omitempty"`
 	Name                  string     `json:"name,omitempty"`
@@ -27,4 +27,5 @@ type Game struct {
 	Videos                []Video    `json:"videos,omitempty"`
 	Platforms             []Platform `json:"platforms,omitempty"`
 	GameModes             []GameMode `json:"game_modes,omitempty"`
+	Publishers            []Company  `json:"publishers,omitempty"`
 }
