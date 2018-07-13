@@ -3,6 +3,7 @@ package igdb
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"net/url"
 
 	"github.com/nineteen72/igdb/services"
@@ -18,13 +19,13 @@ const (
 )
 
 // GetGame returns a game object
-func (c *Client) GetGame(id int64) (models.Game, error) {
+func (c *Client) GetGame(id int64, client *http.Client) (models.Game, error) {
 	gameURL := fmt.Sprintf("%s/games/%d", c.URI, id)
 	params := url.Values{}
 	params.Set("fields", fields)
 	params.Set("expand", expand)
 
-	resp, err := services.PerformRequest(c.APIKey, gameURL, params)
+	resp, err := services.PerformRequest(c.APIKey, gameURL, params, client)
 	if err != nil {
 		return models.Game{}, err
 	}

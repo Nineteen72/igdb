@@ -9,8 +9,7 @@ import (
 )
 
 // PerformRequest performs a network request of type HTTPRequestType, using the passed in url, headers, and parameters.
-func PerformRequest(apiKey, uri string, parameters url.Values) ([]byte, error) {
-	client := &http.Client{}
+func PerformRequest(apiKey, uri string, parameters url.Values, client *http.Client) ([]byte, error) {
 	baseURL := fmt.Sprintf("%s?", uri)
 
 	req, err := http.NewRequest(http.MethodGet, baseURL+parameters.Encode(), nil)
