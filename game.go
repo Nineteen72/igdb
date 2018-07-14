@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/nineteen72/igdb/services"
+	"github.com/Nineteen72/igdb/services"
 
 	"github.com/Nineteen72/igdb/models"
 )
