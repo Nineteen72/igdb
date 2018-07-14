@@ -36,9 +36,9 @@ func (c *Client) GetGame(id int64, client *http.Client) (models.Game, error) {
 	}
 
 	game[0].Videos = parseVideos(game[0].Videos)
-	game[0].Cover = parseImage([]models.Image{game[0].Cover})[0]
-	game[0].Screenshots = parseImage(game[0].Screenshots)
-	game[0].Artworks = parseImage([]models.Image{game[0].Artworks})[0]
+	game[0].Cover = parseImage(game[0].Cover)[0]
+	game[0].Screenshots = parseImage(game[0].Screenshots...)
+	game[0].Artworks = parseImage(game[0].Artworks)[0]
 
 	return game[0], nil
 }
