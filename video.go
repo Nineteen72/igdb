@@ -3,7 +3,7 @@ package igdb
 import (
 	"fmt"
 
-	"github.com/nineteen72/igdb/models"
+	"github.com/Nineteen72/igdb/models"
 )
 
 func parseVideos(videos []models.Video) []models.Video {

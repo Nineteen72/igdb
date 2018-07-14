@@ -8,7 +8,7 @@ import (
 
 	"github.com/nineteen72/igdb/services"
 
-	"github.com/nineteen72/igdb/models"
+	"github.com/Nineteen72/igdb/models"
 )
 
 const (

@@ -3,7 +3,7 @@ package igdb
 import (
 	"strings"
 
-	"github.com/nineteen72/igdb/models"
+	"github.com/Nineteen72/igdb/models"
 )
 
 func parseImage(images ...models.Image) []models.Image {
