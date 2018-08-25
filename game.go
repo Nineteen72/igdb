@@ -19,7 +19,7 @@ const (
 )
 
 // GetGame returns a game object
-func (c *Client) GetGame(id int64, client *http.Client) (models.Game, error) {
+func (c *Client) GetGame(id int64, client *http.Client) (*models.Game, error) {
 	gameURL := fmt.Sprintf("%s/games/%d", c.URI, id)
 	params := url.Values{}
 	params.Set("fields", fields)
@@ -27,18 +27,21 @@ func (c *Client) GetGame(id int64, client *http.Client) (models.Game, error) {
 
 	resp, err := services.PerformRequest(c.APIKey, gameURL, params, client)
 	if err != nil {
-		return models.Game{}, err
+		return nil, err
 	}
 
 	var game []models.Game
 	if err = json.Unmarshal(resp, &game); err != nil {
-		return models.Game{}, err
+		return nil, err
 	}
 
-	game[0].Videos = parseVideos(game[0].Videos)
+	game[0].Videos, err = parseVideos(game[0].Videos)
+	if err != nil {
+		return nil, err
+	}
 	game[0].Cover = parseImage(game[0].Cover)[0]
 	game[0].Screenshots = parseImage(game[0].Screenshots...)
 	game[0].Artworks = parseImage(game[0].Artworks)[0]
 
-	return game[0], nil
+	return &game[0], nil
 }
