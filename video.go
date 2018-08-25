@@ -1,6 +1,7 @@
 package igdb
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/Nineteen72/go-get-youtube/youtube"
@@ -16,12 +17,13 @@ func parseVideos(videos []models.Video, client *http.Client) ([]models.Video, er
 			return nil, err
 		}
 
-		for i, val := range vi.Formats {
-			if ext := vi.GetExtension(i); ext == "mp4" {
+		for j, val := range vi.Formats {
+			if ext := vi.GetExtension(j); ext == "mp4" {
 				v := models.Video{
 					Name:      vi.Title,
 					URL:       val.Url,
 					Extension: ext,
+					Thumbnail: fmt.Sprintf("https://i.ytimg.com/vi/%s/maxresdefault.jpg", i.VideoID),
 				}
 				vList = append(vList, v)
 				break

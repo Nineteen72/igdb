@@ -6,4 +6,5 @@ type Video struct {
 	VideoID   string `json:"video_id,omitempty"`
 	URL       string `json:"url,omitempty"`
 	Extension string `json:"extension,omitempty"`
+	Thumbnail string `json:"thumbnail,omitempty"`
 }
