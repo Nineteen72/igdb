@@ -35,7 +35,7 @@ func (c *Client) GetGame(id int64, client *http.Client) (*models.Game, error) {
 		return nil, err
 	}
 
-	game[0].Videos, err = parseVideos(game[0].Videos)
+	game[0].Videos, err = parseVideos(game[0].Videos, client)
 	if err != nil {
 		return nil, err
 	}

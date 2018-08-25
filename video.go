@@ -1,15 +1,17 @@
 package igdb
 
 import (
+	"net/http"
+
+	"github.com/Nineteen72/go-get-youtube/youtube"
 	"github.com/Nineteen72/igdb/models"
-	"github.com/knadh/go-get-youtube/youtube"
 )
 
-func parseVideos(videos []models.Video) ([]models.Video, error) {
+func parseVideos(videos []models.Video, client *http.Client) ([]models.Video, error) {
 	var vList []models.Video
 
 	for _, i := range videos {
-		vi, err := youtube.Get(i.VideoID)
+		vi, err := youtube.Get(i.VideoID, client)
 		if err != nil {
 			return nil, err
 		}
